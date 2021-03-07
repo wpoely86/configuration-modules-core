@@ -221,9 +221,12 @@ type ${project.artifactId}_unitfile_config_service = {
     'CapabilityBoundingSet' ? linux_capability[]
     'ExecReload' ? string
     'ExecStart' ? string
+    'ExecStartPost' ? string with {deprecated(0, 'ExecStartPost as string is deprecated, use a list'); true}
     'ExecStartPost' ? string[]
+    'ExecStartPre' ? string with {deprecated(0, 'ExecStartPre as string is deprecated, use a list'); true}
     'ExecStartPre' ? string[]
     'ExecStop' ? string
+    'ExecStopPost' ? string with {deprecated(0, 'ExecStopPost as string is deprecated, use a list'); true}
     'ExecStopPost' ? string[]
     'GuessMainPID' ? boolean
     'NonBlocking' ? boolean
