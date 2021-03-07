@@ -57,7 +57,8 @@ bind "/unitfile" = systemd_unitfile_config[];
         'RuntimeDirectoryMode', '0777',
         'RuntimeDirectoryPreserve', 'restart',
         'ExecStartPre', list('/usr/bin/true', '-/bin/false'),
-        'ExecPostStop', '/usr/bin/true',
+        'ExecStopPost', '/usr/bin/true',
+        'ExecStopPost', list('/usr/bin/foo', '/usr/bin/bar'),
         ),
     'socket', dict(
         'ExecStartPre', list('/some/path arg1', '-/some/other/path arg2'),

@@ -16,7 +16,9 @@ contentspath=/unitfile/0
 ^Environment="VAR2-1=val2-1" "VAR2-2=val2-2 val2-2b" $
 ^EnvironmentFile=/envfile/1$
 ^EnvironmentFile=/envfile/2$
-^ExecPostStop=/usr/bin/true$
+^ExecStopPost=/usr/bin/true$
+^ExecStopPost=/usr/bin/foo$
+^ExecStopPost=/usr/bin/bar$
 ^ExecStart=/usr/bin/special$
 ^ExecStartPre=/usr/bin/true$
 ^ExecStartPre=-/bin/false$
