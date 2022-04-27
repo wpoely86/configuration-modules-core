@@ -14,7 +14,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Determine hash for caching key
-      run: ::set-output name=pomcachekey::${{ hashFiles('**/pom.xml') }}
+      run: echo ::set-output name=pomcachekey::${{ hashFiles('**/pom.xml') }}
     - name: set up dependencies
       run: |
         yum -y install epel-release http://yum.quattor.org/devel/quattor-release-1-1.noarch.rpm
