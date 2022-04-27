@@ -2,6 +2,10 @@ name: Run Tests
 
 on: [push, pull_request]
 
+env:
+  ACTIONS_RUNNER_DEBUG: ${{ secrets.ACTIONS_RUNNER_DEBUG }}
+  ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG }}
+
 jobs:
   runtests:
     runs-on: ubuntu-latest
