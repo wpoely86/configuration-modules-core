@@ -63,5 +63,10 @@ jobs:
     - name: test2
       run: |
         pwd
+        ls */pom.xml
+        echo Hash is ${{ hashFiles("*/pom.xml") }}
+    - name: test3
+      run: |
+        pwd
         ls **/pom.xml
-        echo "Hash is ${{ hashFiles('**/pom.xml') }}"
+        echo Hash is ${{ hashFiles("**/pom.xml") }}
