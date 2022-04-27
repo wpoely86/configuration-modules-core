@@ -14,6 +14,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Determine hash for caching key
+      id: cachekeystep
       run: echo ::set-output name=pomcachekey::${{ hashFiles('**/pom.xml') }}
     - name: set up dependencies
       run: |
@@ -42,7 +43,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /tmp/m2
-        key: ${{ runner.os }}-m2-${{ steps.vars.outputs.pomcachekey }}
+        key: ${{ runner.os }}-m2-${{ steps.cachekeystep.outputs.pomcachekey }}
         restore-keys: ${{ runner.os }}-m2-
     - name: run tests
       run: |
