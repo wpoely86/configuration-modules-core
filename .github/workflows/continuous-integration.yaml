@@ -3,8 +3,8 @@ name: Run Tests
 on: [push, pull_request]
 
 env:
-  ACTIONS_RUNNER_DEBUG: ${{ secrets.ACTIONS_RUNNER_DEBUG }}
-  ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG }}
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
 
 jobs:
   runtests:
@@ -44,12 +44,19 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
     - name: run tests
       run: |
+        pwd
         # make sure it exists before chown
         mkdir -p /tmp/m2
         chown -R nobody:nobody . /tmp/m2
         # we have to run as a non-root user to pass the spma tests
         # secondly, we first download all maven dependencies and then run the tests because it fails with hanging downloads otherwise.
         runuser --shell /bin/bash --preserve-environment --command "source /usr/bin/mvn_test.sh && mvn_run \"dependency:resolve $MVN_ARGS\" && mvn_test" nobody
+        pwd
       env:
         QUATTOR_TEST_TEMPLATE_LIBRARY_CORE: /tmp/template-library-core-master
         MVN_ARGS: -Dmaven.repo.local=/tmp/m2
+    - name: test
+      run: |
+        pwd
+        ls **/pom.xml
+        echo "Hash is ${{ hashFiles('**/pom.xml') }}"
