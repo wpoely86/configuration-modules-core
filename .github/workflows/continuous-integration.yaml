@@ -15,7 +15,7 @@ jobs:
     - name: set up dependencies
       run: |
         dnf -y install dnf-plugins-core epel-release http://yum.quattor.org/devel/quattor-release-1-1.noarch.rpm
-        dnf config-manager --set-enabled crb
+        dnf config-manager --set-enabled powertools
         # The available version of perl-Test-Quattor is too old for mvnprove.pl to
         # work, but this is a quick way of pulling in a lot of required dependencies.
         # Surprisingly `which` is not installed by default and panc depends on it.
