@@ -28,8 +28,7 @@ RUN dnf install -y maven which rpm-build panc ncm-lib-blockdevices \
   perl-Net-OpenStack-Client perl-NetAddr-IP perl-REST-Client \
   perl-Set-Scalar perl-Text-Glob cpanminus gcc wget \
   perl-Git-Repository perl-Data-Structure-Util \
-  http://yum.quattor.org/devel/perl-Test-Quattor-18.3.0-SNAPSHOT20180406083650.noarch.rpm \
-  http://yum.quattor.org/devel/aii-ks-21.12.1-SNAPSHOT20230627130118.noarch.rpm
+  perl-Test-Quattor aii-ks
 
 # set workdir to where we'll run the tests
 COPY --chown=99 . /quattor_test
